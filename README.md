@@ -19,23 +19,18 @@ pip install python-etcd3
 Etcd Installation
 Before running the program, make sure you have etcd installed and running. You can install etcd by following the instructions provided here.
 
-### 
-Functionalities
-Put: Allows users to add new key-value pairs to the etcd cluster.
-Get: Retrieves the value associated with a specified key from the etcd cluster.
-Delete: Deletes a key-value pair from the etcd cluster.
-List: Lists all keys present in the etcd cluster.
-Exit: Exits the program.
-Instructions to Run
-Clone the repository or download the etcd_key_value_store.py file.
-Modify the etcd_host and etcd_port variables if necessary.
-Run the script using the following command:
 
-### Instructions to Run<br>
+### Functionalities
+Put: Allows users to add new key-value pairs to the etcd cluster.<br>
+Get: Retrieves the value associated with a specified key from the etcd cluster.<br>
+Delete: Deletes a key-value pair from the etcd cluster.<br>
+List: Lists all keys present in the etcd cluster.<br>
+Exit: Exits the program.<br>
+
+###Instructions to Run
 Clone the repository or download the etcd_key_value_store.py file.<br>
 Modify the etcd_host and etcd_port variables if necessary.<br>
-
-Run the script using the following command:
+Run the script using the following command:<br>
 ```bash
 python etcd_key_value_store.py
 ```
