@@ -1,10 +1,5 @@
 # 6_C_Team2_CC_pStmt4
-Cloud Computing ( UE21CS351 ) Project 2024 _Problem statement 2: Building a Distributed Key-Value Store with etcd
-
-
-
-
-Certainly! Here's how you can structure the README for GitHub:
+#Cloud Computing ( UE21CS351 ) Project 2024 _Problem statement 2: Building a Distributed Key-Value Store with etcd
 
 Etcd Key-Value Store
 This project implements a simple key-value store using etcd, a distributed key-value store that provides a reliable way to store data across a cluster of machines. This implementation allows users to perform basic operations such as putting new key-value pairs, retrieving values by key, deleting key-value pairs, and listing all keys present in the etcd cluster.
