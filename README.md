@@ -98,7 +98,7 @@ Options:
 Enter your choice: 5
 Exiting...
 
-Notes
+Notes:<br>
 Ensure that your etcd cluster is running and accessible from the specified host and port.
 Handle errors gracefully if the connection to the etcd cluster fails.
 
