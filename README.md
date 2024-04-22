@@ -14,7 +14,7 @@ Ensure you have Python installed on your system. You can install the required pa
 
 ```bash
 pip install python-etcd3
-
+```
 
 Etcd Installation
 Before running the program, make sure you have etcd installed and running. You can install etcd by following the instructions provided here.
