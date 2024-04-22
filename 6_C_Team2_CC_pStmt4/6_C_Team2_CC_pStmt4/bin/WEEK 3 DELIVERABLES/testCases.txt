@@ -1,0 +1,27 @@
+a)Putting a Key-Value Pair:
+Test putting a new key-value pair into etcd with valid key and value inputs.
+Test putting a new key-value pair into etcd with an empty key and value.
+Test putting a new key-value pair into etcd with special characters in the key or value.
+
+
+b)Getting a Value for a Key:
+Test getting the value associated with an existing key.
+Test getting the value for a key that does not exist in etcd.
+Test getting the value with an empty key input.
+
+c)Deleting a Key:
+Test deleting an existing key from etcd.
+Test deleting a key that does not exist in etcd.
+Test deleting a key with an empty key input.
+
+d)Listing Keys:
+Test listing all keys when there are keys present in etcd.
+Test listing all keys when there are no keys present in etcd.
+
+e)Invalid Input:
+Test entering an invalid choice in the menu.
+Test entering invalid key or value inputs (e.g., non-string values for keys).
+Test entering non-integer values for the menu choices.
+
+f)Connection Error Handling:
+Test handling connection errors when unable to connect to the etcd cluster.
