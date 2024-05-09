@@ -14,88 +14,35 @@ try:
 
     # Function to generate a random key
     def generate_random_key(length=10):
-        """
-        Generates a random key of specified length.
-
-        Args:
-            length (int): Length of the key to be generated. Default is 10.
-
-        Returns:
-            str: Randomly generated key.
-        """
         return '/'.join(''.join(random.choices(string.ascii_letters + string.digits, k=length)) for _ in range(3))
 
     # Function to generate a random value
     def generate_random_value(length=10):
-        """
-        Generates a random value of specified length.
-
-        Args:
-            length (int): Length of the value to be generated. Default is 10.
-
-        Returns:
-            str: Randomly generated value.
-        """
         return ''.join(random.choices(string.ascii_letters + string.digits, k=length))
 
     # Function to list all keys
     def list_keys():
-        """
-        Lists all keys present in the etcd cluster.
-
-        Returns:
-            list: List of keys present in the etcd cluster.
-        """
         keys = list(etcd.get_all())
         return keys
 
     # Function to get the value associated with a specific key
     def get_value(key):
-        """
-        Retrieves the value associated with the specified key from the etcd cluster.
-
-        Args:
-            key (str): The key for which the value is to be retrieved.
-
-        Returns:
-            str: Value associated with the specified key, or None if the key does not exist.
-        """
-        value, _ = etcd.get(key)
+        value, _= etcd.get(key)
         return value
 
     # Function to put a new key-value pair into etcd
     def put_key_value(key, value):
-        """
-        Adds a new key-value pair to the etcd cluster.
-
-        Args:
-            key (str): The key to be added.
-            value (str): The value associated with the key.
-
-        Returns:
-            None
-        """
         etcd.put(key, value)
         print(f"\nAdded new key-value pair to etcd: {key} -> {value}")
 
     # Function to delete a key-value pair from etcd
     def delete_key(key):
-        """
-        Deletes a key-value pair from the etcd cluster.
-
-        Args:
-            key (str): The key to be deleted.
-
-        Returns:
-            None
-        """
         val = get_value(key)
         if val != None:
             etcd.delete(key)
             print(f"\nDeleted key-value pair from etcd with key: {key}")
         else:
             print("\nNo such key found. The specified key does not exist.")
-
     # Example usage
     if __name__ == "__main__":
         while True:
@@ -109,9 +56,19 @@ try:
             choice = input("\nEnter your choice: ")
 
             if choice == '1':
-                key = input("Enter key: ")
+                key1 = input("Enter key: ")
                 value = input("Enter value: ")
-                put_key_value(key, value)
+                keys = list_keys()
+                flag = 0 
+                for key, metadata in keys:
+                    key_str = metadata.key.decode('utf-8')
+                    if key1 == key_str:
+                        print("\nKey already exists")
+                        flag = 1
+                        break
+                if flag == 0:
+                    put_key_value(key1, value)
+                        
             elif choice == '2':
                 key = input("Enter key: ")
                 value = get_value(key)
@@ -123,9 +80,15 @@ try:
                 key = input("Enter key to delete: ")
                 delete_key(key)
             elif choice == '4':
-                print("\nAll keys in etcd:")
-                for key in list_keys():
-                    print(key)
+                keys = list_keys()
+                if keys != []:
+                    print("\nAll keys in etcd:")
+                    for val, metadata in keys:
+                        key_str = metadata.key.decode('utf-8')  
+                        value_str = val.decode('utf-8')  
+                        print(f"Key: {key_str}, Value: {value_str}")
+                else:
+                    print("\nNo key-values pairs present")
             elif choice == '5':
                 print("Exiting...")
                 break
